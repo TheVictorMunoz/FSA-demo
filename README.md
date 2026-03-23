@@ -31,7 +31,7 @@ Both XRPL transaction hashes and both Flare events are printed to the console.
 | Tool | Version | Notes |
 |------|---------|-------|
 | Node.js | 20+ | `node --version` |
-| pnpm | 8+ | `npm i -g pnpm` |
+| Package manager | npm 10+ or pnpm 8+ | npm is bundled with Node; optional pnpm install: `npm i -g pnpm` |
 | XRPL Testnet wallet | — | Fund at https://faucet.altnet.rippletest.net/accounts |
 
 Your XRPL wallet needs:
@@ -46,7 +46,9 @@ Your XRPL wallet needs:
 # 1. Enter the project directory
 cd flare-smart-accounts-demo
 
-# 2. Install dependencies
+# 2. Install dependencies (choose one)
+npm install
+# OR
 pnpm install
 
 # 3. Create your .env file
@@ -73,6 +75,8 @@ COSTON2_RPC_URL="https://coston2-api.flare.network/ext/C/rpc"
 ### Step 0 — Verify setup (optional but recommended)
 
 ```bash
+npm run check
+# OR
 pnpm check
 ```
 
@@ -84,6 +88,8 @@ vault IDs. Confirm that at least one agent vault is listed. The demo uses
 ### Step 1 — Run the happy path
 
 ```bash
+npm run demo
+# OR
 pnpm demo
 ```
 
@@ -130,7 +136,7 @@ MintingExecuted Flare tx : 0xdef...
 FXRP balance (after)     : 1000000 UBA (= 1 FXRP)
 FXRP minted              : 1000000 UBA (= 1 FXRP)
 
-Run `pnpm check` to see full account state and vault balances.
+Run `npm run check` (or `pnpm check`) to see full account state and vault balances.
 ```
 
 Total wall-clock time: **3–7 minutes** (dominated by FDC attestation).
@@ -138,6 +144,8 @@ Total wall-clock time: **3–7 minutes** (dominated by FDC attestation).
 ### Step 2 — Confirm the result
 
 ```bash
+npm run check
+# OR
 pnpm check
 ```
 
@@ -213,9 +221,21 @@ Personal Smart Account (Coston2) receives FXRP
 ### "XRPL_SEED is not set"
 Copy `.env.example` to `.env` and fill in your values.
 
+### `pnpm` is not recognized (Windows/PowerShell)
+Use npm instead:
+```bash
+npm install
+npm run check
+npm run demo
+```
+If you prefer pnpm, install it globally first:
+```bash
+npm i -g pnpm
+```
+
 ### XRPL TX #1 fails with `tecNO_DST`
 The operator XRPL address has no account — the address was fetched from the
-contract but may not be activated on testnet. Re-run `pnpm check` and verify
+contract but may not be activated on testnet. Re-run `npm run check` (or `pnpm check`) and verify
 the operator address shown matches `rEyj8nsHLdgt79KJWzXR5BgF7ZbaohbXwq`.
 
 ### XRPL TX #1 fails with `tecINSUFFICIENT_FUNDS`
@@ -225,13 +245,13 @@ https://faucet.altnet.rippletest.net/accounts
 ### Timed out waiting for `CollateralReserved`
 - The operator processes XRPL transactions periodically. Wait 2–3 minutes and
   re-run.
-- Verify `agentVaultId` is valid: run `pnpm check` and check the agent vaults
+- Verify `agentVaultId` is valid: run `npm run check` (or `pnpm check`) and check the agent vaults
   list. Change `INSTRUCTION.agentVaultId` in `src/demo.ts` to match.
 - Check the XRPL TX on https://testnet.xrpl.org using TX #1 hash.
 
 ### Timed out waiting for `MintingExecuted`
 - FDC attestation rounds take ~90 s, plus operator processing time.
-- Wait 5–10 minutes, then run `pnpm check` — the balance may already have
+- Wait 5–10 minutes, then run `npm run check` (or `pnpm check`) — the balance may already have
   updated (the event watcher only catches live events, not historical ones).
 
 ### RPC errors / rate limiting
