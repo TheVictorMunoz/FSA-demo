@@ -287,3 +287,6 @@ from the registry at runtime.
 - [XRPL Testnet faucet](https://faucet.altnet.rippletest.net/accounts)
 - [Coston2 block explorer](https://coston2.testnet.flarescan.com/)
 - [XRPL Testnet explorer](https://testnet.xrpl.org/)
+
+---
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/TheVictorMunoz/FSA-demo)
