@@ -289,4 +289,4 @@ from the registry at runtime.
 - [XRPL Testnet explorer](https://testnet.xrpl.org/)
 
 ---
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/TheVictorMunoz/FSA-demo)
+[https://deepwiki.com/TheVictorMunoz/FSA-demo](https://deepwiki.com/TheVictorMunoz/FSA-demo)
